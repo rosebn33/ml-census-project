@@ -1,5 +1,6 @@
 import requests
 
+
 # GET request
 get_response = requests.get("http://127.0.0.1:8000/")
 print("Status Code:", get_response.status_code)

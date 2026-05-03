@@ -3,6 +3,8 @@ import numpy as np
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import precision_score, recall_score, fbeta_score
 
+
+
 def train_model(X_train, y_train):
     model = LogisticRegression(max_iter=1000)
     model.fit(X_train, y_train)
@@ -46,4 +48,3 @@ def performance_on_categorical_slice(y_true, y_pred, X, categorical_feature):
         }
 
     return results
-    

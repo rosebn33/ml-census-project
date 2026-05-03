@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import pandas as pd
 
+
 from ml.model import load_model, inference
 from ml.data import process_data
 

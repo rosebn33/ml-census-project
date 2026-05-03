@@ -1,8 +1,9 @@
-import numpy as np
 from sklearn.preprocessing import OneHotEncoder, LabelBinarizer
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
+
+
 
 def process_data(
     data,
@@ -53,4 +54,3 @@ def process_data(
         X_processed = encoder.transform(X)
         y = lb.transform(y.values).ravel() if y is not None else None
         return X_processed, y, encoder, lb
-        
