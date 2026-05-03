@@ -78,3 +78,4 @@ def predict(data: CensusData):
     result = ">50K" if pred == 1 else "<=50K"
 
     return {"result": result}
+    

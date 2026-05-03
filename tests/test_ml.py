@@ -64,3 +64,4 @@ def test_performance_on_categorical_slice_returns_dict():
     assert isinstance(results, dict)
     assert "Private" in results
     assert "precision" in results["Private"]
+    

@@ -46,3 +46,4 @@ def performance_on_categorical_slice(y_true, y_pred, X, categorical_feature):
         }
 
     return results
+    
