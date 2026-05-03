@@ -10,7 +10,6 @@ from ml.model import (
 from ml.data import process_data
 
 
-
 def test_train_model_returns_model():
     X = np.array([[0, 1], [1, 0]])
     y = np.array([0, 1])
@@ -18,7 +17,6 @@ def test_train_model_returns_model():
     model = train_model(X, y)
 
     assert isinstance(model, LogisticRegression)
-
 
 
 def test_inference_output_shape():
@@ -29,7 +27,6 @@ def test_inference_output_shape():
     preds = inference(model, X)
 
     assert len(preds) == len(X)
-
 
 
 def test_process_data_output_shapes():
@@ -50,7 +47,6 @@ def test_process_data_output_shapes():
 
     assert X.shape[0] == df.shape[0]
     assert len(y) == df.shape[0]
-
 
 
 def test_performance_on_categorical_slice_returns_dict():
