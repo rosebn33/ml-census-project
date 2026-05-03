@@ -2,14 +2,16 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import pandas as pd
 
-
 from ml.model import load_model, inference
 from ml.data import process_data
 
+
 app = FastAPI()
+
 
 # Load model and preprocessing objects
 model, encoder, lb = load_model()
+
 
 # Categorical features (must match training)
 cat_features = [
@@ -23,7 +25,7 @@ cat_features = [
     "native-country",
 ]
 
-# Input schema
+
 class CensusData(BaseModel):
     age: int
     workclass: str
@@ -41,31 +43,33 @@ class CensusData(BaseModel):
     native_country: str
 
 
-# GET endpoint
 @app.get("/")
 def read_root():
     return {"message": "Hello from the API!"}
 
 
-# POST endpoint
 @app.post("/predict")
 def predict(data: CensusData):
-    df = pd.DataFrame([{
-        "age": data.age,
-        "workclass": data.workclass,
-        "fnlwgt": data.fnlwgt,
-        "education": data.education,
-        "education-num": data.education_num,
-        "marital-status": data.marital_status,
-        "occupation": data.occupation,
-        "relationship": data.relationship,
-        "race": data.race,
-        "sex": data.sex,
-        "capital-gain": data.capital_gain,
-        "capital-loss": data.capital_loss,
-        "hours-per-week": data.hours_per_week,
-        "native-country": data.native_country,
-    }])
+    df = pd.DataFrame(
+        [
+            {
+                "age": data.age,
+                "workclass": data.workclass,
+                "fnlwgt": data.fnlwgt,
+                "education": data.education,
+                "education-num": data.education_num,
+                "marital-status": data.marital_status,
+                "occupation": data.occupation,
+                "relationship": data.relationship,
+                "race": data.race,
+                "sex": data.sex,
+                "capital-gain": data.capital_gain,
+                "capital-loss": data.capital_loss,
+                "hours-per-week": data.hours_per_week,
+                "native-country": data.native_country,
+            }
+        ]
+    )
 
     X, _, _, _ = process_data(
         df,
@@ -79,4 +83,3 @@ def predict(data: CensusData):
     result = ">50K" if pred == 1 else "<=50K"
 
     return {"result": result}
-    

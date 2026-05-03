@@ -10,8 +10,12 @@ def train_model(X_train, y_train):
     model.fit(X_train, y_train)
     return model
 
+
+
 def inference(model, X):
     return model.predict(X)
+
+
 
 def save_model(model, encoder, lb, path="model/model.joblib"):
     joblib.dump(
@@ -23,6 +27,8 @@ def save_model(model, encoder, lb, path="model/model.joblib"):
         path,
     )
 
+
+
 def load_model(path="model/model.joblib"):
     objects = joblib.load(path)
     return (
@@ -30,6 +36,8 @@ def load_model(path="model/model.joblib"):
         objects["encoder"],
         objects["label_binarizer"],
     )
+
+
 
 def performance_on_categorical_slice(y_true, y_pred, X, categorical_feature):
     results = {}

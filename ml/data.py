@@ -7,7 +7,7 @@ from sklearn.impute import SimpleImputer
 
 def process_data(
     data,
-    categorical_features=[],
+    categorical_features=None,
     label=None,
     training=True,
     encoder=None,
@@ -16,6 +16,9 @@ def process_data(
     """
     Process the data used in the machine learning pipeline.
     """
+    if categorical_features is None:
+        categorical_features = []
+
     if label is not None:
         y = data[label]
         X = data.drop([label], axis=1)
@@ -50,7 +53,6 @@ def process_data(
         y = lb.fit_transform(y.values).ravel()
         return X_processed, y, preprocessor, lb
 
-    else:
-        X_processed = encoder.transform(X)
-        y = lb.transform(y.values).ravel() if y is not None else None
-        return X_processed, y, encoder, lb
+    X_processed = encoder.transform(X)
+    y = lb.transform(y.values).ravel() if y is not None else None
+    return X_processed, y, encoder, lb
