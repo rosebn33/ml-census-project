@@ -4,7 +4,6 @@ from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 
 
-
 def process_data(
     data,
     categorical_features=None,
