@@ -1,0 +1,6 @@
+numpy
+pandas
+scikit-learn
+fastapi
+pytest
+flake8
