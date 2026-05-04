@@ -65,3 +65,8 @@ These slice‑level results are saved in the file `slice_output.txt`.
 
 ## Ethical Considerations
 
+This model was trained using U.S. Census data that includes sensitive demographic information such as sex, race, marital status, and occupation. Because income is closely connected to social and economic inequalities, a model trained on this data may reflect existing biases present in the historical data.
+
+There is a risk that predictions made by this model could perform differently for certain demographic groups. For example, factors like education level or occupation may be influenced by unequal access to opportunities, which the model does not account for. This model has not been specifically tested or adjusted to ensure fairness across all groups.
+
+For these reasons, this model should not be used to make real‑world decisions that could impact individuals, such as hiring, lending, or eligibility determinations. Its purpose is strictly educational, to demonstrate machine learning concepts rather than to support decision‑making about people.
